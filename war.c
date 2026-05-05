@@ -31,6 +31,17 @@
 
 // --- Função Principal (main) ---
 // Função principal que orquestra o fluxo do jogo, chamando as outras funções em ordem.
+
+#include <stdio.h>
+#include <string.h>
+
+// Struct que representa um território do jogo War
+typedef struct {
+    char nome[30];
+    char cor[10];
+    int tropas;
+} Territorio;
+
 int main() {
     // 1. Configuração Inicial (Setup):
     // - Define o locale para português.
@@ -50,6 +61,32 @@ int main() {
 
     // 3. Limpeza:
     // - Ao final do jogo, libera a memória alocada para o mapa para evitar vazamentos de memória.
+
+    // Vetor para armazenar 5 territórios
+    Territorio territorios[5];
+
+    // Cadastro dos territórios
+    for (int i = 0; i < 5; i++) {
+        printf("\n--- Território %d ---\n", i + 1);
+
+        printf("Nome: ");
+        scanf("%29s", territorios[i].nome);
+
+        printf("Cor do exército: ");
+        scanf("%9s", territorios[i].cor);
+
+        printf("Número de tropas: ");
+        scanf("%d", &territorios[i].tropas);
+    }
+
+    // Exibição dos territórios cadastrados
+    printf("\n========== TERRITÓRIOS CADASTRADOS ==========\n");
+    for (int i = 0; i < 5; i++) {
+        printf("\nTerritório %d\n", i + 1);
+        printf("  Nome:   %s\n", territorios[i].nome);
+        printf("  Cor:    %s\n", territorios[i].cor);
+        printf("  Tropas: %d\n", territorios[i].tropas);
+    }
 
     return 0;
 }
